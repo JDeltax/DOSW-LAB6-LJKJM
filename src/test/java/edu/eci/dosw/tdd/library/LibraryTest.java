@@ -24,7 +24,7 @@ class LibraryTest {
     @Test
     void shouldAddNewBookSuccessfully() {
         // Given
-        Book book = new Book("978-0134685991", "Effective Java", "Joshua Bloch");
+        Book book = new Book("Effective Java", "Joshua Bloch", "978-0134685991");
 
         // When
         boolean result = library.addBook(book);
@@ -36,7 +36,7 @@ class LibraryTest {
     @Test
     void shouldIncreaseBookCountWhenAddingExistingBook() {
         // Given
-        Book book = new Book("978-0134685991", "Effective Java", "Joshua Bloch");
+        Book book = new Book("Effective Java", "Joshua Bloch", "978-0134685991");
         library.addBook(book);
 
         // When
@@ -49,7 +49,7 @@ class LibraryTest {
     @Test
     void shouldAddUserSuccessfully() {
         // Given
-        User user = new User("U001", "John Doe", "john@example.com");
+        User user = new User("John Doe", "U001");
 
         // When
         boolean result = library.addUser(user);
@@ -61,8 +61,8 @@ class LibraryTest {
     @Test
     void shouldCreateLoanWhenBookIsAvailable() {
         // Given
-        User user = new User("U001", "John Doe", "john@example.com");
-        Book book = new Book("978-0134685991", "Effective Java", "Joshua Bloch");
+        User user = new User("John Doe", "U001");
+        Book book = new Book("Effective Java", "Joshua Bloch", "978-0134685991");
         library.addUser(user);
         library.addBook(book);
 
@@ -76,7 +76,7 @@ class LibraryTest {
     @Test
     void shouldReturnNullWhenBookIsNotAvailable() {
         // Given
-        User user = new User("U001", "John Doe", "john@example.com");
+        User user = new User("John Doe", "U001");
         library.addUser(user);
 
         // When
@@ -89,7 +89,7 @@ class LibraryTest {
     @Test
     void shouldReturnNullWhenUserDoesNotExist() {
         // Given
-        Book book = new Book("978-0134685991", "Effective Java", "Joshua Bloch");
+        Book book = new Book("Effective Java", "Joshua Bloch", "978-0134685991");
         library.addBook(book);
 
         // When
@@ -102,8 +102,8 @@ class LibraryTest {
     @Test
     void shouldReturnLoanSuccessfully() {
         // Given
-        User user = new User("U001", "John Doe", "john@example.com");
-        Book book = new Book("978-0134685991", "Effective Java", "Joshua Bloch");
+        User user = new User("John Doe", "U001");
+        Book book = new Book("Effective Java", "Joshua Bloch", "978-0134685991");
         library.addUser(user);
         library.addBook(book);
         Loan loan = library.loanABook("U001", "978-0134685991");

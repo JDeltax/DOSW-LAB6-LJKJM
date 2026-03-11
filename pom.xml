@@ -15,6 +15,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
     <jacoco.version>0.8.14</jacoco.version>
+    
+    <!-- SonarQube properties -->
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
+    <sonar.projectKey>edu.eci.dosw:Library</sonar.projectKey>
+    <sonar.projectName>Library</sonar.projectName>
+    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+    <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.exclusions>**/ap.txt</sonar.exclusions>
   </properties>
 
   <dependencies>
@@ -72,6 +80,11 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.11.0.3922</version>
       </plugin>
     </plugins>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->

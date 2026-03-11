@@ -19,6 +19,7 @@ Ejecuta SonarQube en tu máquina local usando Docker.
 ```bash
 docker run -d --name sonarqube -p 9000:9000 sonarqube:lts-community
 ```
+![alt text](image-8.png)
 
 2. **Acceder a la interfaz web:**
 - URL: http://localhost:9000
@@ -48,9 +49,10 @@ docker stop sonarqube     # Detener SonarQube
 docker start sonarqube    # Reiniciar SonarQube
 docker rm -f sonarqube    # Eliminar contenedor
 
-![alt text](image.png)
 
 ```
+![alt text](image-6.png)
+
 
 ### Opción 2: SonarCloud (Nube)  *Implementado*
 
@@ -106,6 +108,8 @@ SonarQube/SonarCloud proporciona:
 - **Coverage**: Cobertura de pruebas (desde JaCoCo)
 - **Duplicación**: Código duplicado
 - **Complejidad**: Complejidad ciclomática
+
+![alt text](image-7.png)
 
 ![alt text](image-1.png)
 

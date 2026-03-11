@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Book.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Library</a> &gt; <a href="index.source.html" class="el_package">edu.eci.dosw.tdd.library.book</a> &gt; <span class="el_source">Book.java</span></div><h1>Book.java</h1><pre class="source lang-java linenums">package edu.eci.dosw.tdd.library.book;
+
+public class Book {
+
+    private final String title;
+    private final String author;
+    private final String isbn;
+
+<span class="fc" id="L9">    public Book(String title, String author, String isbn) {</span>
+<span class="fc" id="L10">        this.title = title;</span>
+<span class="fc" id="L11">        this.author = author;</span>
+<span class="fc" id="L12">        this.isbn = isbn;</span>
+<span class="fc" id="L13">    }</span>
+
+    public String getTitle() {
+<span class="fc" id="L16">        return title;</span>
+    }
+
+    public String getAuthor() {
+<span class="fc" id="L20">        return author;</span>
+    }
+
+    public String getIsbn() {
+<span class="fc" id="L24">        return isbn;</span>
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (this == obj) return true;</span>
+<span class="fc bfc" id="L30" title="All 4 branches covered.">        if (obj == null || getClass() != obj.getClass()) return false;</span>
+<span class="fc" id="L31">        Book book = (Book) obj;</span>
+<span class="pc bpc" id="L32" title="1 of 4 branches missed.">        return isbn != null &amp;&amp; isbn.equals(book.isbn);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        return isbn != null ? isbn.hashCode() : 0;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

@@ -16,4 +16,10 @@ public class AppTest {
     public void shouldAnswerWithTrue() {
         assertTrue(true);
     }
+
+    @Test
+    public void shouldRunMainWithoutExceptions() {
+        App.main(new String[]{});
+        assertTrue(true);
+    }
 }

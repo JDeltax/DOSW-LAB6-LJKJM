@@ -2,8 +2,10 @@ package edu.eci.dosw.tdd.library;
 
 import edu.eci.dosw.tdd.library.book.Book;
 import edu.eci.dosw.tdd.library.loan.Loan;
+import edu.eci.dosw.tdd.library.loan.LoanStatus;
 import edu.eci.dosw.tdd.library.user.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,8 +35,12 @@ public class Library {
      * @return true if the book was stored, false otherwise.
      */
     public boolean addBook(Book book) {
-        // TODO: Implement the logic to add a new book into the map.
-        return false;
+        if (book == null || book.getIsbn() == null || book.getIsbn().isBlank()) {
+            return false;
+        }
+
+        books.merge(book, 1, Integer::sum);
+        return true;
     }
 
     /**
@@ -47,8 +53,31 @@ public class Library {
      * @return The new created loan.
      */
     public Loan loanABook(String userId, String isbn) {
-        // TODO: Implement the logic of loan a book to a user.
-        return null;
+        User user = findUserById(userId);
+        Book book = findBookByIsbn(isbn);
+
+        if (user == null || book == null) {
+            return null;
+        }
+
+        Integer available = books.get(book);
+        if (available == null || available <= 0) {
+            return null;
+        }
+
+        boolean userHasActiveLoanForBook = loans.stream()
+                .anyMatch(loan -> loan.getUser().getId().equals(userId)
+                        && loan.getBook().getIsbn().equals(isbn)
+                        && loan.getStatus() == LoanStatus.ACTIVE);
+
+        if (userHasActiveLoanForBook) {
+            return null;
+        }
+
+        books.put(book, available - 1);
+        Loan loan = new Loan(book, user, LocalDateTime.now(), LoanStatus.ACTIVE);
+        loans.add(loan);
+        return loan;
     }
 
     /**
@@ -59,11 +88,37 @@ public class Library {
      * @return the loan with the RETURNED status.
      */
     public Loan returnLoan(Loan loan) {
-        // TODO: Implement the logic of returning a book.
-        return null;
+        if (loan == null || loan.getBook() == null || loan.getStatus() != LoanStatus.ACTIVE) {
+            return null;
+        }
+
+        loan.setStatus(LoanStatus.RETURNED);
+        loan.setReturnDate(LocalDateTime.now());
+        books.merge(loan.getBook(), 1, Integer::sum);
+        return loan;
     }
 
     public boolean addUser(User user) {
         return users.add(user);
+    }
+
+    private User findUserById(String userId) {
+        if (userId == null || userId.isBlank()) {
+            return null;
+        }
+        return users.stream()
+                .filter(user -> userId.equals(user.getId()))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private Book findBookByIsbn(String isbn) {
+        if (isbn == null || isbn.isBlank()) {
+            return null;
+        }
+        return books.keySet().stream()
+                .filter(book -> isbn.equals(book.getIsbn()))
+                .findFirst()
+                .orElse(null);
     }
 }

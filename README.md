@@ -1,23 +1,5 @@
 # DOSW-LAB6-LJKJM
-Laboratorio 6 de DOSW
-
-## Seccion 5 - Cobertura con JaCoCo
-
-- Rama de trabajo: `feature/jacoco-dependency`
-- Plugin agregado en `pom.xml`: `org.jacoco:jacoco-maven-plugin:0.8.14`
-- Comando de validacion: `mvn clean verify`
-- Reporte HTML: `target/site/jacoco/index.html`
-
-### Cobertura
-
-- Primera cobertura obtenida (antes de ampliar pruebas):
-	- Line coverage: `70.53%`
-	- Instruction coverage: `71.79%`
-- Ultima cobertura obtenida (despues de ampliar pruebas):
-	- Line coverage: `90.53%`
-	- Instruction coverage: `89.94%`
-
-Nota: si necesitan capturas para la entrega, se toman desde `target/site/jacoco/index.html`.
+Laboratorio 6 de DOSW.
 
 ## Seccion 6 - Análisis de Calidad con SonarQube
 
@@ -65,9 +47,12 @@ docker ps                  # Ver contenedores activos
 docker stop sonarqube     # Detener SonarQube
 docker start sonarqube    # Reiniciar SonarQube
 docker rm -f sonarqube    # Eliminar contenedor
+
+![alt text](image.png)
+
 ```
 
-### Opción 2: SonarCloud (Nube) ✅ *Implementado*
+### Opción 2: SonarCloud (Nube)  *Implementado*
 
 Utiliza SonarCloud, la versión en la nube de SonarQube. **Gratis para proyectos públicos.**
 
@@ -121,3 +106,13 @@ SonarQube/SonarCloud proporciona:
 - **Coverage**: Cobertura de pruebas (desde JaCoCo)
 - **Duplicación**: Código duplicado
 - **Complejidad**: Complejidad ciclomática
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
+![alt text](image-5.png)

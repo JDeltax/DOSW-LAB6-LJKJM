@@ -1,0 +1,7 @@
+organization=kevincuitiva
+projectKey=DOSW-LAB6-LJKJM
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.82683
+dashboardUrl=https://sonarcloud.io/dashboard?id=DOSW-LAB6-LJKJM
+ceTaskId=AZzbHkHznNUXulP0FzOq
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZzbHkHznNUXulP0FzOq
